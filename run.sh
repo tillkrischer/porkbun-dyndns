@@ -1,4 +1,4 @@
-cronschedule="* * * * *"
+cronschedule="*/5 * * * *"
 variableinit="DOMAIN=${DOMAIN} APIKEY=${APIKEY} SECRETAPIKEY=${SECRETAPIKEY}"
 command="node /update-dns.js"
 pipe=">/proc/1/fd/1 2>/proc/1/fd/2"
