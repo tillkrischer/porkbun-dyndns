@@ -1,9 +1,10 @@
 const DOMAIN = process.env.DOMAIN;
 const APIKEY = process.env.APIKEY;
 const SECRETAPIKEY = process.env.SECRETAPIKEY;
+const PORKBUN_API_URL="https://api.porkbun.com"
 
 const porkbunGetExternalIp = async () => {
-  const url = "https://porkbun.com/api/json/v3/ping";
+  const url = `${PORKBUN_API_URL}/api/json/v3/ping`;
   const res = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -16,7 +17,7 @@ const porkbunGetExternalIp = async () => {
 };
 
 const porkbunGetARecordId = async () => {
-  const url = `https://porkbun.com/api/json/v3/dns/retrieve/${DOMAIN}`;
+  const url = `${PORKBUN_API_URL}/api/json/v3/dns/retrieve/${DOMAIN}`;
   const res = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -31,7 +32,7 @@ const porkbunGetARecordId = async () => {
 };
 
 const porkbunSetARecord = async (id, ip) => {
-  const url = `https://porkbun.com/api/json/v3/dns/edit/${DOMAIN}/${id}`;
+  const url = `${PORKBUN_API_URL}/api/json/v3/dns/edit/${DOMAIN}/${id}`;
   console.log(`POST ${url}`);
   const res = await fetch(url, {
     method: "POST",
